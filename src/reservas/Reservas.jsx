@@ -21,10 +21,18 @@ const Reservas = () => {
         fetchReservas();
     }, [fetchReservas]);
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (reserva) => {
         try {
-            await eliminarReserva(id);
-            await fetchReservas();
+            if (!reserva.id) {
+                console.error("ID de reserva no válido");
+                return;
+            }
+
+            // Confirmar eliminación
+            if (window.confirm('¿Estás seguro de eliminar esta reserva?')) {
+                await eliminarReserva(reserva.id);
+                await fetchReservas();
+            }
         } catch (error) {
             console.error("Error al eliminar:", error);
         }
@@ -130,7 +138,7 @@ const Reservas = () => {
                                 <p><strong>Personas:</strong> {reserva.personas}</p>
                                 <div className="action-buttons">
                                     <button className="btn-edit" onClick={() => handleEdit(index)}>Editar</button>
-                                    <button className="btn-delete" onClick={() => handleDelete(index)}>Eliminar</button>
+                                    <button className="btn-delete" onClick={() => handleDelete(reserva)}>Eliminar</button>
                                 </div>
                             </>
                         )}
