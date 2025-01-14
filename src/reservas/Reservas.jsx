@@ -41,9 +41,9 @@ const Reservas = () => {
     };
 
     return (
-        <div className="reservas-container">
-            <h1 className="title">Lista de Reservas</h1>
-            <div className="reservas-list">
+        <div className="reservas-container h-[950px] p-[200px]">
+            <h1 className="title mt-[150px]">Lista de Reservas</h1>
+            <div className="reservas-list  ">
                 {reservas.map((reserva, index) => (
                     <div key={index} className="reserva-card">
                         {editingIndex === index ? (
