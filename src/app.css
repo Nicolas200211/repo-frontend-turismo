@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     padding: 0;
     margin: 0;

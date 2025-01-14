@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import "./Reservas.scss";
+import { reservasService } from "../../../services/app";
 
 Modal.setAppElement("#root");
 
@@ -21,19 +22,48 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a una API
-        console.log("Datos del formulario:", formData);
-        onRequestClose(); // Cerrar el modal después de enviar el formulario
-    };
+        try {
+            // Formatear los datos antes de enviar
+            const formattedData = {
+                ...formData,
+                fecha: new Date(formData.fecha).toISOString(),
+                personas: parseInt(formData.personas)
+            };
 
+            // Validar datos requeridos
+            if (!formattedData.nombre || !formattedData.email || !formattedData.destino || !formattedData.fecha) {
+                throw new Error("Todos los campos son requeridos");
+            }
+
+            // Enviar datos al servidor
+            const response = await reservasService.createReserva(formattedData);
+
+            if (response) {
+                console.log("Reserva creada exitosamente:", response);
+                // Limpiar formulario
+                setFormData({
+                    nombre: "",
+                    email: "",
+                    destino: "",
+                    fecha: "",
+                    personas: 1,
+                });
+                onRequestClose();
+            }
+        } catch (error) {
+            console.error("Error al crear la reserva:", error.message);
+            // Aquí podrías agregar un estado para mostrar el error en la UI
+            alert("Error al crear la reserva: " + error.message);
+        }
+    };
     return (
         <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             contentLabel="Reservar un Viaje"
-            className="modal"
+            className="!text-black modal"
             overlayClassName="overlay"
         >
             <h2>Reservar un Viaje</h2>
@@ -46,6 +76,7 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
                         value={formData.nombre}
                         onChange={handleChange}
                         required
+                        className="text-black"
                     />
                 </label>
                 <label>
@@ -56,6 +87,7 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        className="text-black"
                     />
                 </label>
                 <label>
@@ -66,6 +98,7 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
                         value={formData.destino}
                         onChange={handleChange}
                         required
+                        className="text-black"
                     />
                 </label>
                 <label>
@@ -76,6 +109,7 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
                         value={formData.fecha}
                         onChange={handleChange}
                         required
+                        className="text-black"
                     />
                 </label>
                 <label>
@@ -87,6 +121,7 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
                         onChange={handleChange}
                         min="1"
                         required
+                        className="text-black"
                     />
                 </label>
                 <button type="submit">Enviar</button>
