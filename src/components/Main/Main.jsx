@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import {useEffect} from "react";
 import "./main.css";
 import "./main.scss";
 import { HiOutlineLocationMarker } from "react-icons/hi";

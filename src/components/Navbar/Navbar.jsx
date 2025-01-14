@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './navbar.css';
 import './navbar.scss';
 import { MdOutlineTravelExplore } from 'react-icons/md';
@@ -58,7 +58,7 @@ const Navbar = () => {
                         </li>
 
                         <li className="navItem">
-                            <a href="." className="navLink">paginas</a>
+                            <a href="." className="navLink">Paginas</a>
                         </li>
 
                         <li className="navItem">

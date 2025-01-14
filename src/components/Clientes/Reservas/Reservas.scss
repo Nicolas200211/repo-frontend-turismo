@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* Asegúrate de que el overlay esté en frente de todo */
+    z-index: 1000; 
 }
 
 .modal {
@@ -18,7 +18,7 @@
     max-width: 500px;
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1001; /* Asegúrate de que el modal esté en frente del overlay */
+    z-index: 1001; 
 
     h2 {
         text-align: center;
@@ -31,7 +31,7 @@
 
         label {
             margin-bottom: 10px;
-            color: var(--octonary-color);
+            color: var(--secondary-color);
 
             input {
                 width: 100%;

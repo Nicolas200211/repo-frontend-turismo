@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./footer.css";
 import "./footer.scss";
 import video2 from "../../Assets/Movie/video2.mp4";
@@ -21,7 +21,7 @@ const Footer = () => {
     return (
         <section className="footer">
             <div className="videoDiv">
-                <video src={video2} loop autoPlay muted typeof="video/mp4"></video>
+                <video src={video2} loop autoPlay muted></video>
             </div>
             <div className="secContent container">
                 <div className="contactDiv flex">

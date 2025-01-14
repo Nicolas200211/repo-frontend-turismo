@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./home.css";
 import "./home.scss";
 import video from "../../Assets/Movie/video.mp4";

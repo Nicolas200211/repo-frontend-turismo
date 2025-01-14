@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import Modal from "react-modal";
 import "./Reservas.scss";
 import { reservasService } from "../../../services/app";
@@ -25,24 +26,23 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Formatear los datos antes de enviar
+
             const formattedData = {
                 ...formData,
                 fecha: new Date(formData.fecha).toISOString(),
                 personas: parseInt(formData.personas)
             };
 
-            // Validar datos requeridos
             if (!formattedData.nombre || !formattedData.email || !formattedData.destino || !formattedData.fecha) {
                 throw new Error("Todos los campos son requeridos");
             }
 
-            // Enviar datos al servidor
+
             const response = await reservasService.createReserva(formattedData);
 
             if (response) {
                 console.log("Reserva creada exitosamente:", response);
-                // Limpiar formulario
+
                 setFormData({
                     nombre: "",
                     email: "",
@@ -54,7 +54,6 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
             }
         } catch (error) {
             console.error("Error al crear la reserva:", error.message);
-            // Aquí podrías agregar un estado para mostrar el error en la UI
             alert("Error al crear la reserva: " + error.message);
         }
     };
@@ -128,6 +127,10 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
             </form>
         </Modal>
     );
+};
+ReservasModal.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onRequestClose: PropTypes.func.isRequired,
 };
 
 export default ReservasModal;
