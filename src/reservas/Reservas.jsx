@@ -1,60 +1,48 @@
 import { useEffect, useState } from 'react';
 import './Reservas.css';
 import './Reservas.scss';
-import { reservasService } from '../services/app';
+import { useReservasStore } from '../store/zustand';
 
-// const mockData = [
-//     { nombre: "Juan Pérez", email: "juan@ejemplo.com", destino: "Cusco", fecha: new Date(), personas: 2 },
-//     { nombre: "María López", email: "maria@ejemplo.com", destino: "Machu Picchu", fecha: new Date(), personas: 3 },
-//     { nombre: "Carlos Rodríguez", email: "carlos@ejemplo.com", destino: "Valle Sagrado", fecha: new Date(), personas: 4 },
-//     { nombre: "Ana García", email: "ana@ejemplo.com", destino: "Lima", fecha: new Date(), personas: 1 },
-//     { nombre: "Pedro Díaz", email: "pedro@ejemplo.com", destino: "Arequipa", fecha: new Date(), personas: 2 }
-// ];
 
 const Reservas = () => {
-    const [reservas, setReservas] = useState([]);
+    const {
+        reservas,
+        loading,
+        error,
+        fetchReservas,
+        eliminarReserva,
+        actualizarReserva
+    } = useReservasStore();
+
     const [editingIndex, setEditingIndex] = useState(null);
     const [editedReserva, setEditedReserva] = useState({});
-    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        const fetchReservas = async () => {
-            try {
-                setLoading(true);
-                const reservas = await reservasService.getAllReservas();
-                setReservas(reservas);
-            } catch (error) {
-                console.error("Error al cargar reservas:", error);
-                setReservas([]);
-            } finally {
-                setLoading(false);
-            }
-        }
         fetchReservas();
-    }, [])
+    }, [fetchReservas]);
 
-    const handleDelete = async (index) => {
-        const nuevasReservas = reservas.filter((_, i) => i !== index);
-
+    const handleDelete = async (id) => {
         try {
-            await reservasService.deleteReserva(reservas[index].id);
-            setReservas(nuevasReservas);
-
+            await eliminarReserva(id);
+            await fetchReservas();
         } catch (error) {
-            console.error("Error al eliminar la reserva:", error);
-
+            console.error("Error al eliminar:", error);
         }
     };
 
     const handleEdit = async (index) => {
         setEditingIndex(index);
+        setEditedReserva(reservas[index]);
+    };
+
+    const handleSave = async () => {
         try {
-            const reserva = await reservasService.getReservaById(reservas[index].id);
-            setEditedReserva(reserva);
-
+            await actualizarReserva(editedReserva.id, editedReserva);
+            setEditingIndex(null);
+            await fetchReservas();
         } catch (error) {
-            console.error("Error al obtener la reserva:", error);
+            console.error("Error al actualizar:", error);
         }
-
     };
 
     const formatDate = (date) => {
@@ -68,19 +56,6 @@ const Reservas = () => {
         }
     };
 
-    const handleSave = async () => {
-        const nuevasReservas = [...reservas];
-        nuevasReservas[editingIndex] = editedReserva;
-        try {
-            await reservasService.updateReserva(editedReserva.id, editedReserva);
-            setReservas(nuevasReservas);
-            setEditingIndex(null);
-
-        } catch (error) {
-            console.error("Error al actualizar la reserva:", error);
-
-        }
-    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;

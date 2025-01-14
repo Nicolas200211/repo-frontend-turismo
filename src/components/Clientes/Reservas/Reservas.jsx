@@ -2,11 +2,12 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
 import "./Reservas.scss";
-import { reservasService } from "../../../services/app";
+import { useReservasStore } from "../../../store/zustand";
 
 Modal.setAppElement("#root");
 
 const ReservasModal = ({ isOpen, onRequestClose }) => {
+    const crearReserva = useReservasStore(state => state.crearReserva);
     const [formData, setFormData] = useState({
         nombre: "",
         email: "",
@@ -26,32 +27,30 @@ const ReservasModal = ({ isOpen, onRequestClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-
             const formattedData = {
                 ...formData,
                 fecha: new Date(formData.fecha).toISOString(),
                 personas: parseInt(formData.personas)
             };
 
-            if (!formattedData.nombre || !formattedData.email || !formattedData.destino || !formattedData.fecha) {
+            if (!formattedData.nombre || !formattedData.email ||
+                !formattedData.destino || !formattedData.fecha) {
                 throw new Error("Todos los campos son requeridos");
             }
 
+            await crearReserva(formattedData);
 
-            const response = await reservasService.createReserva(formattedData);
+            // Actualizar la lista después de crear
+            await useReservasStore.getState().fetchReservas();
 
-            if (response) {
-                console.log("Reserva creada exitosamente:", response);
-
-                setFormData({
-                    nombre: "",
-                    email: "",
-                    destino: "",
-                    fecha: "",
-                    personas: 1,
-                });
-                onRequestClose();
-            }
+            setFormData({
+                nombre: "",
+                email: "",
+                destino: "",
+                fecha: "",
+                personas: 1,
+            });
+            onRequestClose();
         } catch (error) {
             console.error("Error al crear la reserva:", error.message);
             alert("Error al crear la reserva: " + error.message);
