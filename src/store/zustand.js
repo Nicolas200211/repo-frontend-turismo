@@ -45,13 +45,27 @@ export const useReservasStore = create((set) => ({
     },
 
     eliminarReserva: async (id) => {
+        if (!id) {
+            set({ error: "ID de reserva no válido" });
+            return;
+        }
+
+        set({ loading: true });
         try {
-            await reservasService.deleteReserva(id);
-            set((state) => ({
-                reservas: state.reservas.filter(r => r.id !== id)
-            }));
+            const response = await reservasService.deleteReserva(id);
+            if (response) {
+                set((state) => ({
+                    reservas: state.reservas.filter(r => r.id !== id),
+                    loading: false,
+                    error: null
+                }));
+            }
         } catch (error) {
-            set({ error: error.message });
+            console.error("Error al eliminar:", error);
+            set({ 
+                error: "Error al eliminar la reserva. Por favor, intente nuevamente.",
+                loading: false 
+            });
         }
     }
 }));
