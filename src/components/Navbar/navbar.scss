@@ -1,0 +1,178 @@
+:root {
+    --primary-color: rgb(226, 223, 223);
+    --secondary-color: #1c8188;
+    --tertiary-color: black;
+    --quaternary-color: rgb(218, 214, 214);
+    --quinary-color: #24b7c2;
+    --senary-color: black;
+    --septenary-color: #43aa8b;
+    --octonary-color: white;
+    --nonary-color: #b9b5b1;
+    --denary-color: #277da1;
+}
+
+.header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    width: 100%;
+    padding: 1rem;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(2, 15, 29, 0.904);
+
+    .logo {
+        color: var(--tertiary-color);
+        font-weight: 600;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+            font-size: 35px;
+            color: var(--quinary-color);
+            transform: translateY(5px);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .navBar {
+            position: absolute;
+            background-color: var(--primary-color);
+            height: max-content;
+            width: 80%;
+            border-radius: 1rem;
+            top: -600rem;
+            left: 50%;
+            padding: 1rem;
+            transform: translateX(-50%);
+            z-index: 2000;
+            box-shadow: 0 2px 4px rgba(2, 15, 29, 0.904);
+            transition: 0.3s ease-in-out;
+        }
+
+        .toggleNavbar {
+            .icon {
+                font-size: 25px;
+                color: var(--tertiary-color);
+            }
+
+            &:hover {
+                .icon {
+                    color: var(--quinary-color);
+                }
+            }
+        }
+
+        .navLists {
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            margin: auto;
+            padding: 0.5rem 0;
+        }
+
+        .activeNavbar {
+            top: 7rem;
+        }
+
+        .navItem {
+            padding: 0.5rem 0;
+
+            .navLink {
+                color: var(--tertiary-color);
+                font-size: 0.9rem;
+                font-weight: 600;
+
+                &:hover {
+                    color: var(--quinary-color);
+                }
+            }
+
+            .btn {
+                margin-top: 1rem;
+
+                a {
+                    font-weight: 600;
+                    color: var(--tertiary-color);
+                }
+            }
+        }
+
+        .closeNavbar {
+            display: block;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: var(--tertiary-color);
+
+            &:hover {
+                color: var(--quinary-color);
+            }
+
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (min-width:769px){
+
+    .toggleNavbar,.closeNavbar{
+        display: none;
+    }
+
+    .header{
+        padding: 1.5rem 2rem;
+
+        .navBar{
+            .navLists{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+
+                .navItem{
+                    .navLink{
+                        color: var(--tertiary-color);
+                        padding: 0 0.45rem;
+                        font-size: 0.9rem;
+                        font-weight: 500;
+
+                        &:hover{
+                            color: var( --denary-color);
+                        }
+                    }
+                }
+
+                .btn{
+                    margin-left: 1rem;
+                    a{
+                        color: var(--octonary-color);
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width:960px){
+    .header{
+        .navBar{
+            .navLists{
+                .navItem{
+                    padding: 0 0.7rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width:1240px){
+    .header{
+        padding: 1rem 8.5rem;
+    }
+}
