@@ -8,7 +8,6 @@ const Reservas = () => {
     const {
         reservas,
         loading,
-        error,
         fetchReservas,
         eliminarReserva,
         actualizarReserva
