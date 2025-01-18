@@ -10,7 +10,7 @@ const menuItems = [
     { name: "Inicio", path: "." },
     { name: "Paquetes", path: "." },
     { name: "Comercio", path: "." },
-    { name: "Acerca de", path: "." },
+    { name: "Nosotros", path: "." },
     { name: "Paginas", path: "." },
     { name: "Noticias", path: "." },
     { name: "Contacto", path: "." },

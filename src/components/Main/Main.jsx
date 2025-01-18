@@ -4,12 +4,12 @@ import "./main.scss";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { LuClipboardCheck } from "react-icons/lu";
 
-import img from "../../Assets/images/imgAyacucho(1).jpg";
-import img2 from "../../Assets/images/imgIca(2).jpg";
-import img3 from "../../Assets/images/imgPuno(3).jpg";
-import img4 from "../../Assets/images/imgLima(4).jpg";
-import img5 from "../../Assets/images/imgCusco(5).jpg";
-import img6 from "../../Assets/images/imgArequipa(6).jpg";
+import img from "../../Assets/images/cruceroAmazonas(1).jpg";
+import img2 from "../../Assets/images/cruceroTiticaca(2).jpg";
+import img3 from "../../Assets/images/cruceroBallestas(3).jpg";
+import img4 from "../../Assets/images/cruceroUcayali(4).jpg";
+import img5 from "../../Assets/images/cruceroAmazonas(5).jpg";
+import img6 from "../../Assets/images/cruceroMarañón(6).jpg";
 
 import Aos from 'aos';
 import 'aos/dist/aos.css'
@@ -21,63 +21,64 @@ const Data = [
     {
         id: 1,
         imgSrc: img,
-        destTitle: "Plaza Mayor de Huamanga",
-        location: "Ayacucho, Perú",
-        grade: "CULTURA Y RELAX",
-        fees: "$300",
+        destTitle: "Crucero por el Río Amazonas",
+        location: "Iquitos, Perú",
+        grade: "AVENTURA Y NATURALEZA",
+        fees: "$1500",
         description:
-            "La Plaza Mayor de Huamanga es el corazón histórico de Ayacucho. Rodeada de arquitectura colonial, es perfecta para relajarse y sumergirse en la cultura local.",
+            "Explora la biodiversidad del Amazonas en un lujoso crucero, disfrutando de paisajes únicos, visitas a comunidades locales y experiencias inolvidables.",
     },
     {
         id: 2,
         imgSrc: img2,
-        destTitle: "Huacachina",
-        location: "Ica, Perú",
-        grade: "AVENTURA Y NATURALEZA",
-        fees: "$500",
+        destTitle: "Crucero por el Lago Titicaca",
+        location: "Puno, Perú",
+        grade: "CULTURA Y TRADICIÓN",
+        fees: "$800",
         description:
-            "Huacachina es un oasis en el desierto, ideal para practicar deportes como sandboarding o dar paseos en buggy mientras disfrutas de su belleza única.",
+            "Descubre las islas flotantes de los Uros y la cultura ancestral de Taquile mientras navegas en las aguas más altas del mundo.",
     },
     {
         id: 3,
         imgSrc: img3,
-        destTitle: "Lago Titicaca",
-        location: "Puno, Perú",
-        grade: "HISTORIA Y NATURALEZA",
-        fees: "$600",
+        destTitle: "Crucero por las Islas Ballestas",
+        location: "Paracas, Perú",
+        grade: "NATURALEZA Y VIDA SILVESTRE",
+        fees: "$400",
         description:
-            "El Lago Titicaca, el lago navegable más alto del mundo, ofrece una experiencia inolvidable al visitar las islas flotantes de los Uros y conocer su cultura ancestral.",
+            "Navega por las Islas Ballestas y maravíllate con la fauna marina, incluyendo pingüinos, lobos marinos y una variedad de aves en su hábitat natural.",
     },
     {
         id: 4,
         imgSrc: img4,
-        destTitle: "Plaza Mayor de Lima",
-        location: "Lima, Perú",
-        grade: "HISTÓRICO Y CULTURAL",
-        fees: "$250",
+        destTitle: "Crucero por el Río Ucayali",
+        location: "Ucayali, Perú",
+        grade: "AVENTURA EXÓTICA",
+        fees: "$1200",
         description:
-            "La Plaza Mayor de Lima es el punto de partida ideal para explorar la historia del Perú, con su imponente catedral y el Palacio de Gobierno.",
+            "Explora los misteriosos paisajes del Río Ucayali en un crucero que combina comodidad, avistamiento de fauna y visitas a comunidades nativas.",
     },
     {
         id: 5,
         imgSrc: img5,
-        destTitle: "Machu Picchu",
-        location: "Cusco, Perú",
-        grade: "MARAVILLA MUNDIAL",
-        fees: "$1200",
+        destTitle: "Crucero de Lujo en el Amazonas",
+        location: "Loreto, Perú",
+        grade: "LUJO Y EXCLUSIVIDAD",
+        fees: "$2000",
         description:
-            "Machu Picchu, la joya de los Andes, es una de las siete maravillas del mundo moderno y un destino que combina historia, misterio y belleza natural.",
+            "Disfruta de un crucero exclusivo por el Amazonas con servicios de primera clase, gastronomía local e impresionantes vistas de la selva.",
     },
     {
         id: 6,
         imgSrc: img6,
-        destTitle: "Cañón del Colca",
-        location: "Arequipa, Perú",
-        grade: "AVENTURA Y NATURALEZA",
-        fees: "$800",
+        destTitle: "Crucero por el Río Marañón",
+        location: "Amazonas, Perú",
+        grade: "NATURALEZA Y EXPLORACIÓN",
+        fees: "$1400",
         description:
-            "El Cañón del Colca, uno de los más profundos del mundo, es un lugar perfecto para el avistamiento de cóndores y para conectarse con la naturaleza andina.",
+            "Viaja por el Río Marañón, conocido como la cuna del Amazonas, explorando sus espectaculares paisajes y su riqueza ecológica.",
     },
+    
 ];
 
 const Main = () => {
