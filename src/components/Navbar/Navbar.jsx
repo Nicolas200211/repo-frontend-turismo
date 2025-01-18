@@ -44,7 +44,7 @@ const Navbar = () => {
             <header className="header flex">
                 <div className="logDiv">
                     <a href="·" className="logo flex">
-                        <h1><MdOutlineTravelExplore className="icon" />Viajero.</h1>
+                        <h1><MdOutlineTravelExplore className="icon" />Vipac.</h1>
                     </a>
                 </div>
 

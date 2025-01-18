@@ -25,12 +25,13 @@
     .logo {
         color: var(--tertiary-color);
         font-weight: 600;
+        font-size: 30px;
         cursor: pointer;
         align-items: center;
         justify-content: center;
 
         .icon {
-            font-size: 35px;
+            font-size: 25px;
             color: var(--quinary-color);
             transform: translateY(5px);
         }

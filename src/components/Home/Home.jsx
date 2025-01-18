@@ -26,9 +26,9 @@ const Home = () => {
 
             <div className="homeContent container">
                 <div data-aos="fade-up" className="textDiv">
-                    <span className="smallText">Our Packages</span>
+                    <span className="smallText">Nuestros Paquetes</span>
 
-                    <h1 className="homeTitle">Search you Holidays</h1>
+                    <h1 className="homeTitle">Busca tus Vacaciones</h1>
                 </div>
 
                 <div data-aos="fade-up" className="cardDiv grid">
@@ -61,7 +61,7 @@ const Home = () => {
 
                     <div className="searchOptions flex">
                         <HiFilter className="icon" />
-                        <span>More Filters</span>
+                        <span>Más filtros</span>
                     </div>
                 </div>
 
